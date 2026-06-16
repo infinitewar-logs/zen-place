@@ -2,6 +2,29 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
+// This is your main JavaScript file where you set up the Three.js scene, load your model, and handle interactions.
+
+// 1. GLOBAL UTILITY FUNCTIONS (Put these at the top so they load first)
+
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("bellButton");
+  if (btn) {
+    btn.addEventListener("click", () => {
+      console.log("Bell was clicked!");
+      playMusic();
+    });
+  }
+});
+
+function playMusic() {
+  let audio = new Audio("./free-music.mp3");
+  audio
+    .play()
+    .catch((err) =>
+      console.log("Audio play blocked until user interaction:", err),
+    );
+}
+
 // 1. Core Setup (Scene, Camera, Renderer)
 const scene = new THREE.Scene();
 
